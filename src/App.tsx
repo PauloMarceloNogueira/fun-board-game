@@ -16,8 +16,8 @@ export default function App() {
     10,
     15,
     20,
-    21,
-    26,
+    25,
+    30,
     31,
     32,
     33,
@@ -28,11 +28,13 @@ export default function App() {
       userName: "PM",
       position: 0,
       id: 0,
+      turn: true,
     },
     {
       userName: "FB",
       position: 0,
       id: 1,
+      turn: false,
     },
   ]);
 
@@ -47,7 +49,8 @@ export default function App() {
   };
 
   const handleChangePosition = (userId: number) => {
-    const randomNumber = Math.floor(Math.random() * 5) + 1;
+    // const randomNumber = Math.floor(Math.random() * 5) + 1;
+    const randomNumber = 1;
 
     let newPosition =
       available[available.indexOf(users[userId].position) + randomNumber];
@@ -62,14 +65,12 @@ export default function App() {
         finish: true,
       });
     }
-    const newUsers = users;
-    newUsers[userId] = {
-      ...newUsers[userId],
-      position: newPosition,
-    };
+
     setUsers(
       users.map((user) =>
-        user.id === userId ? { ...user, position: newPosition } : user
+        user.id === userId
+          ? { ...user, position: newPosition, turn: false }
+          : { ...user, turn: true }
       )
     );
   };
