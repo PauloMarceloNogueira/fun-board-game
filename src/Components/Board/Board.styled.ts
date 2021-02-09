@@ -24,7 +24,7 @@ export const Box = styled.div<{ finish: boolean; start: boolean }>`
     props.finish || props.start ? "yellow" : "white"};
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   position: relative;
   flex-direction: column;
   border-radius: ${(props) => (props.finish || props.start ? "50%" : "none")};
